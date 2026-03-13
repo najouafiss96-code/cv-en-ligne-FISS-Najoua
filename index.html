@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CV — Fiss Najoua</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+
+  <!-- CSS Personnalisé -->
+  <style>
+    :root {
+      --primary: #0f2027;
+      --accent:  #b8860b;
+      --light:   #fafaf8;
+      --alt:     #f0ece4;
+      --muted:   #888;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--light);
+      color: #2a2a2a;
+      scroll-behavior: smooth;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      background: var(--primary);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 0.9rem 0;
+    }
+
+    .navbar-brand {
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--accent) !important;
+      font-size: 1.4rem;
+      letter-spacing: 1px;
+    }
+
+    .nav-link {
+      color: rgba(255,255,255,0.75) !important;
+      font-size: 0.88rem;
+      letter-spacing: 0.3px;
+      transition: color 0.2s;
+      padding: 0.5rem 0.9rem !important;
+    }
+
+    .nav-link:hover { color: var(--accent) !important; }
+
+    .navbar-toggler { border-color: var(--accent); }
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28184,134,11,1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    /* SECTIONS */
+    section { padding: 4.5rem 0; }
+    .bg-alt { background: var(--alt); }
+
+    .section-title {
+      font-size: 2rem;
+      color: var(--primary);
+      display: inline-block;
+      margin-bottom: 0.4rem;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 45px;
+      height: 3px;
+      background: var(--accent);
+      margin-top: 0.35rem;
+    }
+
+    /* HERO */
+    #profil {
+      background: var(--primary);
+      padding: 5rem 0;
+      color: white;
+    }
+
+    .photo-wrap {
+      width: 145px;
+      height: 145px;
+      border-radius: 50%;
+      border: 4px solid var(--accent);
+      background: #1e3040;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      overflow: hidden;
+    }
+
+    .photo-wrap i { font-size: 4.5rem; color: rgba(255,255,255,0.15); }
+
+    .hero-name {
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: #fff;
+      margin-bottom: 0.3rem;
+    }
+
+    .hero-titre {
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-family: 'DM Sans', sans-serif;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-links a {
+      color: rgba(255,255,255,0.65);
+      text-decoration: none;
+      margin: 0 0.5rem;
+      font-size: 0.88rem;
+      transition: color 0.2s;
+    }
+
+    .hero-links a:hover { color: var(--accent); }
+
+    .btn-cv {
+      display: inline-block;
+      margin-top: 1.3rem;
+      background: var(--accent);
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 0.88rem;
+      padding: 0.65rem 2rem;
+      border-radius: 2px;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      transition: opacity 0.2s;
+    }
+
+    .btn-cv:hover { opacity: 0.82; color: var(--primary); }
+
+    /* À PROPOS */
+    .about-text {
+      font-size: 1rem;
+      line-height: 1.9;
+      color: #444;
+    }
+
+    .info-card {
+      border: none;
+      border-radius: 3px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      padding: 1.2rem;
+      text-align: center;
+      height: 100%;
+    }
+
+    .info-card i { font-size: 1.8rem; color: var(--accent); margin-bottom: 0.5rem; }
+    .info-card .label { font-weight: 600; font-size: 0.9rem; color: var(--primary); }
+    .info-card .val { font-size: 0.8rem; color: var(--muted); }
+
+    /* COMPÉTENCES */
+    .skill-label { font-size: 0.85rem; font-weight: 500; margin-bottom: 0.25rem; color: var(--primary); }
+    .progress { height: 7px; background: #ddd6c8; border-radius: 4px; margin-bottom: 1rem; }
+    .progress-bar { background: var(--accent); border-radius: 4px; }
+
+    .badge-outil {
+      display: inline-block;
+      background: var(--primary);
+      color: var(--accent);
+      font-size: 0.78rem;
+      padding: 0.3rem 0.85rem;
+      border-radius: 2px;
+      margin: 0.2rem;
+      font-weight: 500;
+    }
+
+    /* TIMELINE */
+    .timeline-item {
+      border-left: 3px solid var(--accent);
+      padding-left: 1.4rem;
+      margin-bottom: 1.8rem;
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: '';
+      width: 11px; height: 11px;
+      background: var(--accent);
+      border-radius: 50%;
+      position: absolute;
+      left: -7px; top: 5px;
+    }
+
+    .tl-date { font-size: 0.77rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+    .tl-role { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--primary); font-weight: 600; }
+    .tl-org  { color: var(--accent); font-size: 0.87rem; font-weight: 500; margin-bottom: 0.3rem; }
+    .tl-desc { font-size: 0.87rem; color: #555; line-height: 1.7; }
+
+    /* PROJETS */
+    .card-projet {
+      border: none;
+      border-radius: 3px;
+      overflow: hidden;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+      height: 100%;
+    }
+
+    .card-projet:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.13);
+    }
+
+    .card-projet .card-header {
+      background: var(--primary);
+      color: var(--accent);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 1rem 1.3rem;
+      border: none;
+    }
+
+    .card-projet .card-body { padding: 1.3rem; }
+    .card-projet .card-text { font-size: 0.87rem; color: #555; line-height: 1.7; }
+
+    .tag-tech {
+      display: inline-block;
+      background: #e4ddd2;
+      color: var(--primary);
+      font-size: 0.72rem;
+      padding: 0.18rem 0.55rem;
+      border-radius: 2px;
+      margin: 0.12rem;
+      font-weight: 500;
+    }
+
+    .btn-voir {
+      display: inline-block;
+      margin-top: 0.9rem;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 0.35rem 0.9rem;
+      border-radius: 2px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-voir:hover { background: var(--primary); color: var(--accent); }
+
+    /* CONTACT */
+    #contact { background: var(--primary); color: white; }
+    #contact .section-title { color: white; }
+
+    .form-control {
+      background: rgba(255,255,255,0.07) !important;
+      border: 1px solid rgba(255,255,255,0.15) !important;
+      color: white !important;
+      border-radius: 2px;
+      padding: 0.7rem 1rem;
+    }
+
+    .form-control::placeholder { color: rgba(255,255,255,0.3) !important; }
+    .form-control:focus { border-color: var(--accent) !important; box-shadow: none !important; }
+
+    .form-label { color: rgba(255,255,255,0.6); font-size: 0.83rem; margin-bottom: 0.35rem; }
+
+    .btn-envoyer {
+      background: var(--accent);
+      color: var(--primary);
+      border: none;
+      font-weight: 700;
+      padding: 0.7rem 2.2rem;
+      border-radius: 2px;
+      font-size: 0.88rem;
+      transition: opacity 0.2s;
+    }
+
+    .btn-envoyer:hover { opacity: 0.85; }
+
+    .contact-ligne {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      margin-bottom: 1.1rem;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+    }
+
+    .contact-ligne i { color: var(--accent); font-size: 1.1rem; width: 22px; }
+    .contact-ligne a { color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.2s; }
+    .contact-ligne a:hover { color: var(--accent); }
+
+    /* FOOTER */
+    footer {
+      background: #080f14;
+      color: rgba(255,255,255,0.35);
+      text-align: center;
+      padding: 1.2rem;
+      font-size: 0.78rem;
+    }
+
+    footer span { color: var(--accent); }
+
+    @media (max-width: 768px) {
+      section { padding: 3rem 0; }
+      #profil { padding: 3.5rem 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="#profil">FN.</a>
+      <button class="navbar-toggler" type="button"
+        data-bs-toggle="collapse" data-bs-target="#navMenu"
+        aria-controls="navMenu" aria-expanded="false" aria-label="Navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#profil">Accueil</a></li>
+          <li class="nav-item"><a class="nav-link" href="#apropos">À propos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#competences">Compétences</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experience">Expériences</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projets">Projets</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PROFIL -->
+  <section id="profil">
+    <div class="container text-center">
+      <div class="photo-wrap">
+        <i class="bi bi-person-fill" aria-hidden="true"></i>
+      </div>
+      <h1 class="hero-name">Fiss Najoua</h1>
+      <p class="hero-titre">Marketing Digital &amp; Expérience Utilisateur</p>
+      <div class="hero-links">
+        <a href="https://linkedin.com/in/fiss-najoua" target="_blank" rel="noopener">
+          <i class="bi bi-linkedin"></i> LinkedIn
+        </a>
+        <a href="https://github.com/fiss-najoua" target="_blank" rel="noopener">
+          <i class="bi bi-github"></i> GitHub
+        </a>
+        <a href="mailto:fissnajwa@gmail.com">
+          <i class="bi bi-envelope"></i> fissnajwa@gmail.com
+        </a>
+      </div>
+      <a href="assets/cv-fiss-najoua.pdf" class="btn-cv" download>
+        <i class="bi bi-download me-2"></i>Télécharger CV PDF
+      </a>
+    </div>
+  </section>
+
+  <!-- À PROPOS -->
+  <section id="apropos">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-md-6">
+          <p class="section-title">À propos</p>
+          <p class="about-text mt-3">
+            Étudiante motivée et passionnée par le <strong>marketing digital</strong> et
+            l'<strong>expérience utilisateur</strong>, avec plusieurs expériences dans les études
+            de marché, l'analyse des besoins clients et la mise en place de plans marketing.
+          </p>
+          <p class="about-text mt-2">
+            Dotée d'un sens d'observation, d'organisation et d'analyse, je cherche un
+            <strong>stage de fin d'études</strong> pour approfondir mes compétences au sein
+            d'une équipe innovante et contribuer à des projets concrets.
+          </p>
+        </div>
+        <div class="col-md-6">
+          <div class="row g-3">
+            <div class="col-6">
+              <div class="info-card card">
+                <i class="bi bi-mortarboard-fill"></i>
+                <div class="label">2ème Année</div>
+                <div class="val">EST Dakhla — 2024/2026</div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="info-card card">
+                <i class="bi bi-geo-alt-fill"></i>
+                <div class="label">Dakhla, Maroc</div>
+                <div class="val">Disponible pour stages</div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="info-card card">
+                <i class="bi bi-translate"></i>
+                <div class="label">Langues</div>
+                <div class="val">Arabe · Français · Anglais</div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="info-card card">
+                <i class="bi bi-telephone-fill"></i>
+                <div class="label">0767616483</div>
+                <div class="val">fissnajwa@gmail.com</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPÉTENCES -->
+  <section id="competences" class="bg-alt">
+    <div class="container">
+      <p class="section-title">Compétences</p>
+      <div class="row mt-4 g-5">
+        <div class="col-md-6">
+          <h5 class="mb-3" style="color:var(--primary); font-family:'Cormorant Garamond',serif; font-size:1.3rem;">Compétences clés</h5>
+          <div class="skill-label">Étude de Marché &amp; Collecte de Données</div>
+          <div class="progress"><div class="progress-bar" style="width:80%" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div></div>
+          <div class="skill-label">Marketing Digital</div>
+          <div class="progress"><div class="progress-bar" style="width:75%" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div></div>
+          <div class="skill-label">Communication &amp; Esprit d'Équipe</div>
+          <div class="progress"><div class="progress-bar" style="width:85%" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div></div>
+          <div class="skill-label">Analyse de Données</div>
+          <div class="progress"><div class="progress-bar" style="width:70%" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div></div>
+          <div class="skill-label">HTML / CSS / Bootstrap 5</div>
+          <div class="progress"><div class="progress-bar" style="width:65%" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div></div>
+        </div>
+        <div class="col-md-6">
+          <h5 class="mb-3" style="color:var(--primary); font-family:'Cormorant Garamond',serif; font-size:1.3rem;">Outils &amp; Langues</h5>
+          <span class="badge-outil">Canva</span>
+          <span class="badge-outil">WordPress</span>
+          <span class="badge-outil">Git / GitHub</span>
+          <span class="badge-outil">Google Analytics</span>
+          <span class="badge-outil">Meta Business</span>
+          <span class="badge-outil">Notion</span>
+          <span class="badge-outil">Trello</span>
+          <div class="mt-3">
+            <span class="badge-outil"><i class="bi bi-circle-fill me-1" style="font-size:0.5rem"></i>Arabe — Langue maternelle</span>
+            <span class="badge-outil"><i class="bi bi-circle-fill me-1" style="font-size:0.5rem"></i>Français — Intermédiaire</span>
+            <span class="badge-outil"><i class="bi bi-circle-fill me-1" style="font-size:0.5rem"></i>Anglais — Niveau de base</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPÉRIENCES + FORMATION -->
+  <section id="experience">
+    <div class="container">
+      <div class="row g-5">
+        <!-- Expériences -->
+        <div class="col-md-6">
+          <p class="section-title">Expériences &amp; Stages</p>
+          <div class="mt-4">
+            <div class="timeline-item">
+              <div class="tl-date">Août 2025 — 1 mois</div>
+              <div class="tl-role">Stage d'Observation</div>
+              <div class="tl-org">Cabinet d'Études SM Développement Conseils</div>
+              <div class="tl-desc">Participation à une mission d'observation terrain. Conception de l'expérience touristique pour le projet <em>THE VIEW</em>.</div>
+            </div>
+            <div class="timeline-item">
+              <div class="tl-date">Mai 2025 — 1 mois</div>
+              <div class="tl-role">Stage — Accueil &amp; Administration</div>
+              <div class="tl-org">ANAPEC — Dakhla</div>
+              <div class="tl-desc">Accueil et orientation des usagers. Organisation et gestion administrative des dossiers. Participation aux enquêtes internes.</div>
+            </div>
+            <div class="timeline-item">
+              <div class="tl-date">Novembre 2024 — 1 mois</div>
+              <div class="tl-role">Stage — Étude de Marché</div>
+              <div class="tl-org">FBM — Cabinet d'Études</div>
+              <div class="tl-desc">Participation à la réalisation d'une étude de marché complète. Découverte des méthodes d'enquête et des techniques d'analyse. Participation à l'élaboration d'un plan marketing digital.</div>
+            </div>
+          </div>
+        </div>
+        <!-- Formation -->
+        <div class="col-md-6">
+          <p class="section-title">Formation</p>
+          <div class="mt-4">
+            <div class="timeline-item">
+              <div class="tl-date">2024 — 2026</div>
+              <div class="tl-role">DUT Marketing Digital &amp; Expérience Utilisateur</div>
+              <div class="tl-org">École Supérieure de Technologie — Dakhla</div>
+              <div class="tl-desc">2ème année. Marketing digital, UX/UI, développement web front-end, stratégie de contenu.</div>
+            </div>
+            <div class="timeline-item">
+              <div class="tl-date">Promotion 2024</div>
+              <div class="tl-role">Baccalauréat Économie et Gestion</div>
+              <div class="tl-org">Lycée Technique Lalla Khadija — Dakhla</div>
+              <div class="tl-desc">Obtention du baccalauréat économie et gestion.</div>
+            </div>
+            <div class="timeline-item">
+              <div class="tl-date">27 Mai 2024 — Juillet 2024</div>
+              <div class="tl-role">Formation en Entrepreneuriat</div>
+              <div class="tl-org">Dakhla Learning Center</div>
+              <div class="tl-desc">Introduction à l'entrepreneuriat (80h). Compétences fondamentales : communication, gestion, soft skills (40h). Participation au développement d'idées de projets.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJETS -->
+  <section id="projets" class="bg-alt">
+    <div class="container">
+      <p class="section-title">Projets</p>
+      <div class="row mt-4 g-4">
+        <div class="col-md-4">
+          <div class="card card-projet">
+            <div class="card-header">CV en ligne</div>
+            <div class="card-body">
+              <p class="card-text">Site CV personnel responsive réalisé avec Bootstrap 5 et CSS personnalisé, déployé sur GitHub Pages.</p>
+              <div>
+                <span class="tag-tech">HTML</span>
+                <span class="tag-tech">CSS</span>
+                <span class="tag-tech">Bootstrap 5</span>
+                <span class="tag-tech">GitHub Pages</span>
+              </div>
+              <a href="https://github.com/fiss-najoua/cv-en-ligne-fissnajoua" class="btn-voir" target="_blank" rel="noopener">
+                <i class="bi bi-github me-1"></i>Voir le projet
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card card-projet">
+            <div class="card-header">Étude de Marché — FBM</div>
+            <div class="card-body">
+              <p class="card-text">Participation à une étude de marché complète : collecte de données terrain, analyse des résultats et contribution à un plan marketing digital.</p>
+              <div>
+                <span class="tag-tech">Étude de marché</span>
+                <span class="tag-tech">Analyse de données</span>
+                <span class="tag-tech">Marketing</span>
+              </div>
+              <a href="#" class="btn-voir">
+                <i class="bi bi-eye me-1"></i>Voir le projet
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card card-projet">
+            <div class="card-header">Projet THE VIEW</div>
+            <div class="card-body">
+              <p class="card-text">Participation à la conception de l'expérience touristique pour le projet THE VIEW lors du stage au Cabinet SM Développement Conseils.</p>
+              <div>
+                <span class="tag-tech">UX</span>
+                <span class="tag-tech">Tourisme</span>
+                <span class="tag-tech">Observation terrain</span>
+              </div>
+              <a href="#" class="btn-voir">
+                <i class="bi bi-eye me-1"></i>Voir le projet
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-md-5">
+          <p class="section-title">Contact</p>
+          <p class="mt-3" style="color:rgba(255,255,255,0.6); line-height:1.8; font-size:0.95rem;">
+            À la recherche d'un stage de fin d'études. N'hésitez pas à me contacter !
+          </p>
+          <div class="mt-4">
+            <div class="contact-ligne">
+              <i class="bi bi-envelope-fill"></i>
+              <a href="mailto:fissnajwa@gmail.com">fissnajwa@gmail.com</a>
+            </div>
+            <div class="contact-ligne">
+              <i class="bi bi-telephone-fill"></i>
+              <span>0767616483</span>
+            </div>
+            <div class="contact-ligne">
+              <i class="bi bi-linkedin"></i>
+              <a href="https://linkedin.com/in/fiss-najoua" target="_blank" rel="noopener">linkedin.com/in/fiss-najoua</a>
+            </div>
+            <div class="contact-ligne">
+              <i class="bi bi-github"></i>
+              <a href="https://github.com/fiss-najoua" target="_blank" rel="noopener">github.com/fiss-najoua</a>
+            </div>
+            <div class="contact-ligne">
+              <i class="bi bi-geo-alt-fill"></i>
+              <span>Dakhla, Maroc</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-7">
+          <form>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label" for="nom">Nom complet</label>
+                <input type="text" class="form-control" id="nom" placeholder="Votre nom" aria-label="Nom complet"/>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="email">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="votre@email.com" aria-label="Email"/>
+              </div>
+              <div class="col-12">
+                <label class="form-label" for="sujet">Sujet</label>
+                <input type="text" class="form-control" id="sujet" placeholder="Sujet du message" aria-label="Sujet"/>
+              </div>
+              <div class="col-12">
+                <label class="form-label" for="message">Message</label>
+                <textarea class="form-control" id="message" rows="5" placeholder="Votre message..." aria-label="Message"></textarea>
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn-envoyer">
+                  <i class="bi bi-send me-2"></i>Envoyer
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 <span>Fiss Najoua</span> — Tous droits réservés</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
